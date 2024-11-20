@@ -1,13 +1,6 @@
 {
-  "private": true,
-  "type": "module",
   "name": "@inquirer/root",
-  "author": "Simon Boudrias <admin@simonboudrias.com>",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "yarn@4.4.1+sha256.920b4530755296dc2ce8b4351f057d4a26429524fcb2789d277560d94837c27e",
+  "private": true,
   "keywords": [
     "answer",
     "answers",
@@ -47,53 +40,61 @@
     "yo",
     "zsh"
   ],
-  "devDependencies": {
-    "@arethetypeswrong/cli": "^0.16.1",
-    "@eslint/js": "^9.9.1",
-    "@sindresorhus/tsconfig": "^6.0.0",
-    "@types/node": "^22.5.2",
-    "@vitest/coverage-v8": "^2.0.5",
-    "@vitest/ui": "^2.0.5",
-    "eslint": "^9.9.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-n": "^17.10.2",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-unicorn": "^55.0.0",
-    "globals": "^15.9.0",
-    "globby": "^14.0.2",
-    "husky": "^9.1.5",
-    "lerna": "^8.1.8",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "ts-node": "^10.9.2",
-    "turbo": "^2.1.1",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.3.0",
-    "vitest": "^2.0.5"
-  },
-  "resolutions": {
-    "type-fest": "^4.0.0"
-  },
-  "workspaces": [
-    "packages/*",
-    "integration/*"
-  ],
-  "scripts": {
-    "prepare": "husky && turbo tsc attw",
-    "setup": "node ./tools/setup-packages.mjs",
-    "pretest": "turbo tsc && eslint . && yarn tsc:test",
-    "test": "vitest --run packages && node --test integration/**/*.test.*",
-    "dev": "turbo watch tsc",
-    "demo": "node --watch-path=packages/ packages/demo/",
-    "tsc": "turbo tsc",
-    "tsc:test": "tsc -p tsconfig.test.json"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SBoudrias/Inquirer.js.git"
   },
-  "lint-staged": {
-    "*": "yarn prettier --write",
+  "license": "MIT",
+  "author": "Simon Boudrias <admin@simonboudrias.com>",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "integration/*",
+    "internals/*"
+  ],
+  "scripts": {
+    "demo": "node --watch-path=packages/ packages/demo/",
+    "dev": "turbo watch tsc",
+    "prepare": "husky && turbo tsc attw",
+    "setup": "node ./tools/setup-packages.mjs",
+    "pretest": "turbo tsc && eslint . && yarn tsc:test",
+    "test": "vitest --run packages && node --test integration/**/*.test.*",
+    "tsc": "turbo tsc",
+    "tsc:test": "tsc -p tsconfig.json"
+  },
+  "nano-staged": {
+    "*": "yarn prettier --write --ignore-unknown",
     "*.m?[jt]sx?": "yarn eslint --fix"
+  },
+  "resolutions": {
+    "type-fest": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@repo/hoist-peer-dependencies": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "^22.9.0",
+    "@vitest/coverage-v8": "^2.1.5",
+    "@vitest/ui": "^2.1.5",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-n": "^17.13.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-unicorn": "^56.0.0",
+    "globals": "^15.12.0",
+    "globby": "^14.0.2",
+    "husky": "^9.1.6",
+    "lerna": "^8.1.9",
+    "nano-staged": "^0.8.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "turbo": "^2.3.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.14.0",
+    "vitest": "^2.1.5"
+  },
+  "packageManager": "yarn@4.5.1+sha512.341db9396b6e289fecc30cd7ab3af65060e05ebff4b3b47547b278b9e67b08f485ecd8c79006b405446262142c7a38154445ef7f17c1d5d1de7d90bf9ce7054d",
+  "engines": {
+    "node": ">=18"
   }
 }

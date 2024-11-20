@@ -1,6 +1,7 @@
 node_modules
 dist
 coverage
+.tshy-build
 .idea
 .yarn/*
 !.yarn/cache
@@ -10,3 +11,4 @@ coverage
 !.yarn/sdks
 !.yarn/versions
 .turbo
+.DS_Store

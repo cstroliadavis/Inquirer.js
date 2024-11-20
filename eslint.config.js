@@ -27,6 +27,7 @@ export default tseslint.config(
       },
     },
     rules: {
+      'n/hashbang': 'off',
       'unicorn/consistent-function-scoping': 'off',
       'unicorn/filename-case': 'off',
       'unicorn/no-array-callback-reference': 'off',
@@ -41,16 +42,18 @@ export default tseslint.config(
   },
   {
     files: ['**/*.mts', '**/*.ts'],
-    extends: [...tseslint.configs.recommendedTypeChecked],
+    extends: [...tseslint.configs.strictTypeChecked],
     languageOptions: {
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ['packages/*/*.test.mts'],
-          defaultProject: './tsconfig.test.json',
-          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 20,
-        },
-        tsconfigRootDir: import.meta.dirname,
+        projectService: true,
       },
+    },
+    rules: {
+      '@typescript-eslint/restrict-template-expressions': 'off',
+      '@typescript-eslint/no-invalid-void-type': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
+      '@typescript-eslint/no-unnecessary-type-parameters': 'off',
     },
   },
   {
